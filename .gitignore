@@ -1,0 +1,20 @@
+# Java / Maven
+target/
+*.class
+.idea/
+*.iml
+.mvn/
+help.md
+
+# Node / React
+node_modules/
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Docker / OS
+.DS_Store
+Thumbs.db
+postgres_data/
