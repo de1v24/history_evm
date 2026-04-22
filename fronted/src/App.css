@@ -1,0 +1,307 @@
+/* Базовые стили */
+:root {
+  --primary: #2c3e50;
+  --accent: #3498db;
+  --success: #27ae60;
+  --danger: #e74c3c;
+  --bg: #f5f6fa;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #2f3640;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+
+/* Панель управления */
+.controls {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  flex: 1;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: 1px solid #dcdde1;
+  font-size: 1rem;
+}
+
+.sort-select {
+  padding: 0 15px;
+  border-radius: 10px;
+  border: 1px solid #dcdde1;
+}
+
+/* Сетка карточек */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card.selected {
+  outline: 3px solid var(--accent);
+}
+
+.card-img-container {
+  position: relative;
+  height: 180px;
+  cursor: pointer;
+}
+
+.card-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+.card-img-container:hover .overlay {
+  opacity: 1;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.badge {
+  background: #f1f2f6;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.comp-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.comp-btn.active {
+  background: var(--danger);
+}
+
+/* Форма добавления */
+.admin-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.add-toggle-btn {
+  padding: 12px 25px;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-form {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  margin-top: 20px;
+  text-align: left;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.add-form input, .add-form textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.add-form textarea {
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Сравнение */
+.compare-panel {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  border-bottom: 4px solid var(--accent);
+}
+
+.compare-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.compare-table td, .compare-table th {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.winner {
+  color: var(--success);
+  font-weight: bold;
+  background: #f0fff4;
+}
+
+/* Модальное окно */
+.modal-mask {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: white;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+}
+
+.modal-layout {
+  display: flex;
+  gap: 30px;
+}
+
+.modal-layout img {
+  width: 300px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.modal-stats {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.close-x {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: none; border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modal-layout { flex-direction: column; }
+  .modal-layout img { width: 100%; }
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.delete-btn {
+  background: #f1f2f6;
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+  padding: 0 12px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+
+/* Обновим кнопку сравнения, чтобы она занимала оставшееся место */
+.comp-btn {
+  flex: 1; /* Кнопка растянется, оставив место корзине */
+  margin-top: 0; /* Убираем лишний отступ, так как он теперь в card-actions */
+}
