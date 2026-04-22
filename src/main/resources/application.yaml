@@ -7,7 +7,7 @@ spring:
 
   datasource:
     datasource:
-      url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/computer_history}
+      url: jdbc:postgresql://postgres-db:5432/computer_history
       username: ${JDBC_DATABASE_USERNAME:history_user}
       password: ${JDBC_DATABASE_PASSWORD:history_password}
 
