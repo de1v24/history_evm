@@ -1,9 +1,9 @@
-FROM eclipse-temurin:21-jdk-alpine
+FROM maven:3.9.6-eclipse-temurin-21-alpine
 WORKDIR /app
-COPY mvnw .
-COPY .mvn .mvn
+
 COPY pom.xml .
 COPY src src
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
-CMD ["java", "-jar", "target/demo-0.0.1-SNAPSHOT.jar"]
+
+RUN mvn clean package -DskipTests
+
+CMD ["sh", "-c", "java -jar target/*.jar"]
