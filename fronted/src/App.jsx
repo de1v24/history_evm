@@ -3,8 +3,6 @@ import './App.css'
 
 // --- НАСТРОЙКА URL БЭКЕНДА ---
 // В облаке мы укажем этот адрес в настройках. 
-// Локально будет использоваться http://localhost:8080
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
 function App() {
   const [computers, setComputers] = useState([])
@@ -24,7 +22,7 @@ function App() {
   }, [])
 
   const fetchComputers = () => {
-    fetch(`${API_URL}/api/computers`)
+    fetch(`/api/computers`)
       .then(response => response.json())
       .then(data => {
         setComputers(data)
@@ -43,7 +41,7 @@ function App() {
       powerConsumptionKw: parseFloat(newComputer.powerConsumptionKw)
     }
 
-    fetch(`${API_URL}/api/computers`, {
+    fetch(`/api/computers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(dataToSend)
@@ -59,7 +57,7 @@ function App() {
 
   const handleDelete = (id, name) => {
     if (window.confirm(`Удалить ЭВМ "${name}" навсегда?`)) {
-      fetch(`${API_URL}/api/computers/${id}`, { method: 'DELETE' })
+      fetch(`/api/computers/${id}`, { method: 'DELETE' })
       .then(response => {
         if (response.ok) {
           setComputers(computers.filter(c => c.id !== id))
