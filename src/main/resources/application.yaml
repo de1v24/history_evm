@@ -6,10 +6,10 @@ spring:
     name: computer-history-storage
 
   datasource:
-    datasource:
-      url: jdbc:postgresql://postgres-db:5432/computer_history
-      username: ${JDBC_DATABASE_USERNAME:history_user}
-      password: ${JDBC_DATABASE_PASSWORD:history_password}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/computer_history}
+    username: history_user
+    password: history_password
+    driver-className: org.postgresql.Driver
 
   jpa:
     hibernate:
@@ -19,6 +19,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+
   flyway:
     enabled: true
     baseline-on-migrate: true

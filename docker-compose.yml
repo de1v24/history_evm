@@ -1,6 +1,15 @@
 version: '3.8'
 
 services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/computer_history
+
   postgres-db:
     image: postgres:15-alpine
     container_name: computer_history_db
