@@ -56,16 +56,33 @@ function App() {
   }
 
   const handleDelete = (id, name) => {
-    if (window.confirm(`Удалить ЭВМ "${name}" навсегда?`)) {
-      fetch(`/api/computers/${id}`, { method: 'DELETE' })
-      .then(response => {
-        if (response.ok) {
-          setComputers(computers.filter(c => c.id !== id))
-          setCompareList(compareList.filter(c => c.id !== id))
-        }
-      })
-    }
+  // 1. Проверяем, доходит ли клик вообще
+  console.log("Попытка удаления ЭВМ с ID:", id); 
+
+  // 2. Если ID по какой-то причине не пришел, мы об этом узнаем
+  if (!id) {
+    alert("Ошибка: у этой записи нет ID в базе данных");
+    return;
   }
+
+  if (window.confirm(`Вы уверены, что хотите удалить "${name}"?`)) {
+    fetch(`/api/computers/${id}`, { 
+      method: 'DELETE' 
+    })
+    .then(response => {
+      if (response.ok) {
+        setComputers(prev => prev.filter(c => c.id !== id));
+        setCompareList(prev => prev.filter(c => c.id !== id));
+      } else {
+        alert("Сервер ответил ошибкой: " + response.status);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert("Ошибка сети при удалении");
+    });
+  }
+};
 
   const toggleCompare = (computer) => {
     const isAlreadySelected = compareList.find(c => c.id === computer.id)
