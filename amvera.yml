@@ -1,0 +1,6 @@
+version: 2
+toolchain:
+  name: docker
+  version: latest
+deploy:
+  compose: docker-compose.yml
