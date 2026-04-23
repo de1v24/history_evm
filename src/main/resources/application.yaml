@@ -6,7 +6,7 @@ spring:
     name: computer-history-storage
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/computer_history}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres-db:5432/computer_history}
     username: history_user
     password: history_password
     driver-className: org.postgresql.Driver
